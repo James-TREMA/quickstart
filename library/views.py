@@ -10,6 +10,9 @@ def author_list(request: HttpRequest) -> HttpResponse:
         { 'authors': Author.objects.all() }
     )
 
+def author_detail(request: HttpRequest, id: int)->HttpResponse:
+    author = Author.objects.get(id == request.GET.get("id"))
+
 def books_list(request: HttpRequest) -> HttpResponse:
     return render(
         request,
