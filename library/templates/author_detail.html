@@ -1,18 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste des livres - {{ author.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .no-books {
+            color: #666;
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <h1>Livres de {{ author.name }}</h1>
-    <ul>
-        {% for book in books %}
-        <li>{{ book.title }} <sub>{{ book.published }}</sub></li>
-        {% empty %}
-        <li>Aucun livre enregistré pour cet auteur</li>
-        {% endfor %}
-    </ul>
+    {% if books %}
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Date de publication</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.published|date:"l d F \\a\\n\\n\\é\\e\\s Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="no-books">Aucun livre enregistré pour cet auteur.</p>
+    {% endif %}
+    <a href="/authors" class="back-link">Retour à la liste des auteurs</a>
 </body>
 </html>
