@@ -58,7 +58,7 @@
             {% for book in books %}
             <tr>
                 <td>{{ book.title }}</td>
-                <td>{{ book.published|date:"l d F \\a\\n\\n\\é\\e\\s Y" }}</td>
+                <td style="color: red;">{{ book.published|date:"l d F \\a\\n\\n\\é\\e\\s Y" }}</td>
             </tr>
             {% endfor %}
         </tbody>
