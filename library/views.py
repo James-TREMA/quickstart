@@ -1,6 +1,6 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
-from .models import Author
+from .models import Author, Book
 
 # Create your views here.
 def author_list(request: HttpRequest) -> HttpResponse:
@@ -14,5 +14,5 @@ def books_list(request: HttpRequest) -> HttpResponse:
     return render(
         request,
         'books.html',
-        { 'books': Author.objects.all() }
+        { 'books': Book.objects.all() }
     )
