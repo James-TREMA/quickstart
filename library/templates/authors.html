@@ -12,5 +12,14 @@
         <li><a href="/authors/{{author.id}}">{{author.name}}</a></li>
         {% endfor %}
     </ul>
+    <form action="{% url 'library:author' %}" method="post">
+    {% csrf_token %}
+        <fieldset>
+            <legend>Ajouter un auteur</legend>
+            <input type="text" name="name" placeholder="Nom de l'auteur"/>
+            <input type="date" name="birthdate" />
+        </fieldset>
+        <button type="submit">Ajouter</button>
+    </form>
 </body>
 </html>
