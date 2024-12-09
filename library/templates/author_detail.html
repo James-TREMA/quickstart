@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>{{ author.name }}</h1>
+    <p>Biographie : {{ author.biography }}</p>
+
+    <h2>Livres écrits par {{ author.name }} :</h2>
+    <ul>
+        {% for book in books %}
+            <li>{{ book.title }} (publié le {{ book.publication_date }})</li>
+        {% empty %}
+            <li>Aucun livre trouvé pour cet auteur.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
