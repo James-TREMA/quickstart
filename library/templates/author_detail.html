@@ -6,15 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{{ author.name }}</h1>
-    <p>Biographie : {{ author.biography }}</p>
-
-    <h2>Livres écrits par {{ author.name }} :</h2>
+    <h1>Livres de {{ author.name }}</h1>
     <ul>
         {% for book in books %}
-            <li>{{ book.title }} (publié le {{ book.publication_date }})</li>
+        <li>{{ book.title }} <sub>{{ book.published }}</sub></li>
         {% empty %}
-            <li>Aucun livre trouvé pour cet auteur.</li>
+        <li>Aucun livre enregistré pour cet auteur</li>
         {% endfor %}
     </ul>
 </body>

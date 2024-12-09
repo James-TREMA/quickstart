@@ -9,8 +9,8 @@ class Author(models.Model):
         return self.name
 
 class Book(models.Model):
-    title = models.CharField(max_length=255)
-    publication_date = models.DateField()
+    title = models.CharField(max_length=200)
+    published = models.DateField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
     def __str__(self):

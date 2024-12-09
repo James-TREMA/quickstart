@@ -10,17 +10,15 @@ def author_list(request: HttpRequest) -> HttpResponse:
         { 'authors': Author.objects.all() }
     )
 
-def author_detail(request: HttpRequest, id: int) -> HttpResponse:
-    try:
-        author = Author.objects.get(id=id)  
-        books = Book.objects.filter(author=author)
-        return render(request, 'author_detail.html', {
-            'author': author,
-            'books': books
-        })
-    except Author.DoesNotExist:
-        return HttpResponse("Auteur non trouvé", status=404)
-
+def author_detail(request: HttpRequest, author_id: int)->HttpResponse:
+    author = Author.objects.get(id=author_id)
+    books = Book.objects.filter(author=author)
+    return render(
+        request,
+        'author_detail.html',
+        { 'author': author, 'books': books },
+    )
+    
 def books_list(request: HttpRequest) -> HttpResponse:
     return render(
         request,
