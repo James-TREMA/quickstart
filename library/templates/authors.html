@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des auteurs</title>
-    <link rel="stylesheet" href="{% static 'authors.css' %}">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul class="header-buttons">
-                <li><a href="{% url 'authors_list' %}" class="button">Authors</a></li>
-                <li><a href="{% url 'books_list' %}" class="button">Books</a></li>
-                <!-- <li><a href="{% url 'logout' %}" class="button">LOGOUT</a></li> -->
-                <li><a href="{% url 'login' %}" class="button" aria-label="Connexion">LOGIN</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Liste des auteurs</h1>
-        <ul>
-            {% for author in authors %}
-            <li><a href="/authors/{{author.id}}">{{author.name}}</a></li>
-            {% endfor %}
-        </ul>
-        <form action="{% url 'authors_list' %}" method="post">
-        {% csrf_token %}
-            <fieldset>
-                <legend>Ajouter un auteur</legend>
-                <input type="text" name="name" placeholder="Nom de l'auteur" aria-label="Nom de l'auteur"/>
-                <input type="date" name="birthdate" aria-label="Date de naissance"/>
-            </fieldset>
-            <button type="submit">Ajouter</button>
-        </form>
-    </main>
-</body>
-</html>
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<h1>Liste des auteurs</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group form-inline">
+        {{ form.name|add_label_class:"form-label" }} {{ form.name|add_class:"form-input" }}
+    </div>
+    <div class="form-group form-inline">
+        {{ form.birthdate|add_label_class:"form-label" }} {{ form.birthdate|add_class:"form-input" }}
+    </div>
+    <button class="btn" type="submit">Ajouter</button>
+    {{ form.errors }}
+</form>
+
+<ul>
+    {% for author in authors %}
+    <li><a href="/authors/{{author.id}}">{{author.name}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

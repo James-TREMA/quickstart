@@ -1,135 +1,136 @@
-/* library/static/login.css */
-
-/* Global Style for Login Page */
+/* Style général pour la page de connexion */
 body.login-page {
-    margin: 0;
-    padding: 0;
     font-family: 'Arial', sans-serif;
+    margin: 0;
     background: linear-gradient(135deg, #6dd5ed, #2193b0);
     color: #333;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    min-height: 100vh;
 }
 
-/* Header Scoped to Login Page */
-header.login-header {
-    width: 100%;
-    background: #34495e;
+/* En-tête */
+.login-header {
+    background-color: #1a73e8;
     padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-header.login-header nav {
+.header-buttons {
     display: flex;
     justify-content: center;
-}
-
-header.login-header ul.header-buttons {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
     gap: 15px;
 }
 
-header.login-header ul.header-buttons li {
-    margin: 0;
-}
-
-header.login-header ul.header-buttons li a {
+.header-buttons .button {
     text-decoration: none;
+    font-size: 1rem;
+    color: #fff;
+    background: #4285f4;
     padding: 10px 20px;
-    color: #ecf0f1;
-    background: #2c3e50;
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-header.login-header ul.header-buttons li a:hover {
-    background: #ecf0f1;
-    color: #2c3e50;
+.header-buttons .button:hover {
+    background: #2a62c4;
 }
 
-/* Main Content for Login Page */
-main.login-main {
-    background: #fff;
+/* Section principale */
+.login-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px); /* Moins la hauteur de l'en-tête */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 30px 40px;
     border-radius: 10px;
-    padding: 30px 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
     width: 100%;
     max-width: 400px;
-    margin: 40px auto;
+    box-sizing: border-box;
     text-align: center;
 }
 
-main.login-main h1 {
-    font-size: 2rem;
+.login-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 20px;
-    color: #2c3e50;
 }
 
-main.login-main form {
+.login-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
-main.login-main form fieldset {
+.login-fieldset {
     border: none;
     padding: 0;
     margin: 0;
 }
 
-main.login-main form fieldset legend {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #34495e;
+.login-fieldset legend {
+    font-size: 1rem;
     margin-bottom: 10px;
+    color: #555;
+    font-weight: bold;
 }
 
-main.login-main form div {
+.form-group {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 5px;
 }
 
-main.login-main form div label {
-    font-weight: bold;
-    margin-bottom: 5px;
+.form-group label {
     font-size: 0.9rem;
-    color: #34495e;
+    color: #555;
+    text-align: left;
 }
 
-main.login-main form div input {
-    padding: 12px;
-    width: 100%;
-    font-size: 1rem;
-    border: 1px solid #bdc3c7;
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-main.login-main form div input:focus {
-    border-color: #3498db;
-}
-
-main.login-main form button[type="submit"] {
-    background: #3498db;
-    color: white;
     font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #1a73e8;
+    outline: none;
+    box-shadow: 0 0 5px rgba(26, 115, 232, 0.5);
+}
+
+/* Bouton de connexion */
+.login-button {
     padding: 12px;
+    font-size: 1rem;
+    color: #fff;
+    background: linear-gradient(135deg, #4ecdc4, #2e9c9c);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
-main.login-main form button[type="submit"]:hover {
-    background: #2980b9;
+.login-button:hover {
+    background: linear-gradient(135deg, #2e9c9c, #4ecdc4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
 }

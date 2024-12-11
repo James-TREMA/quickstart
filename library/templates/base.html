@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <style>
+        .active {
+            border: 1px solid #4b48d6 !important;
+            border-radius: 0.3em !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" style="padding: 0.3em;">
+        <section class="navbar-section">
+            <a href="/authors/" class="btn btn-link {% if request.path == '/authors/' %}active{% endif %}">Auteurs</a>
+            <a href="/books/" class="btn btn-link {% if request.path == '/books/' %}active{% endif %}">Livres</a>
+        </section>
+        <section class="navbar-section">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn btn-link">Deconnexion</button>
+            </form>
+        </section>
+    </header>
+    <div class="divider"></div>
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
