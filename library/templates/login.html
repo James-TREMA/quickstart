@@ -7,8 +7,8 @@
     <title>Connexion</title>
     <link rel="stylesheet" href="{% static 'login.css' %}">
 </head>
-<body>
-    <header>
+<body class="login-page">
+    <header class="login-header">
         <nav>
             <ul class="header-buttons">
                 <li><a href="{% url 'authors_list' %}" class="button">Authors</a></li>
@@ -16,7 +16,7 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main class="login-main">
         <section class="login-container">
             <h1 class="login-title">Connexion</h1>
             <form method="post" class="login-form">
