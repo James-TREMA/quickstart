@@ -34,6 +34,12 @@ class AuthorList(LoginRequiredMixin, View):
         )
     
 class BooksView(PostPermissionMixin, View):
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.method == "POST" and '_method' in request.POST:
+            return self.delete(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
+
     def get(self, request: HttpRequest)->HttpResponse:
         form = BookForm()
         return render(
@@ -52,6 +58,15 @@ class BooksView(PostPermissionMixin, View):
             'books.html',
             { 'form': form, 'books': Book.objects.all() },
         )
+    
+    def delete(self, request: HttpRequest, pk: int)->HttpResponse:
+        print('PASS')
+        try:
+            book = Book.objects.get(id=pk)
+            book.delete()
+        except Book.DoesNotExist:
+            raise Http404("Book does not exist")
+        return HttpResponseRedirect(redirect_to='/books')
 
 # Create your views here as functions.
 @login_required # comes from django.contrib.auth.decorators

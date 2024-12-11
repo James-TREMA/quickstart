@@ -2,6 +2,9 @@
 {% load widget_tweaks %}
 {% block content %}
 <h1>Liste des livres</h1>
+
+<!-- if not connected we don't see form -->
+{% if user.is_authenticated %}
 <form method="post">
    <div class="form-header">Ajouter un Livre</div>
    {% csrf_token %}
@@ -19,8 +22,18 @@
    {{ form.errors }}
    <button class="btn" type="submit">Ajouter</button>
 </form>
-
+{% endif %}
 <ul>
-   {% for book in books %}<li><strong>{{ book.title }}</strong></li>{% endfor %}
+   {% for book in books %}
+   <li style="display: flex; align-items: center; justify-content: space-between; margin-right: 0.8em">
+      <strong>{{ book.title }}</strong>
+      <form method="post">
+         {% csrf_token %}
+         <input type="hidden" name="_method" value="delete" />
+         <input type="hidden" name="id" value="{{ book.id }}" />
+         <button class="btn" type="submit" onclick="return confirm('Supprimez définitivement {{ book.title }}')">Supprimer</button>
+      </form>
+   </li>
+   {% endfor %}
 </ul>
 {% endblock %}
