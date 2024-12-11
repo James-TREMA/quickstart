@@ -1,11 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Livres de {{ author.name }}</h1>
+<h1>Modifier l'auteur</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group form-inline">
+        {{ author_form.name|add_label_class:"form-label" }} 
+        {{ author_form.name|add_class:"form-input" }}
+    </div>
+    <div class="form-group form-inline">
+        {{ author_form.birthdate|add_label_class:"form-label" }} 
+        {{ author_form.birthdate|add_class:"form-input" }}
+    </div>
+    <button class="btn" type="submit">Modifier</button>
+    {{ author_form.errors }}
+</form>
+
+<h2>Liste des livres</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group form-inline">
+        {{ book_form.title|add_label_class:"form-label" }} 
+        {{ book_form.title|add_class:"form-input" }}
+    </div>
+    <div class="form-group form-inline">
+        {{ book_form.published|add_label_class:"form-label" }} 
+        {{ book_form.published|add_class:"form-input" }}
+    </div>
+    <button class="btn" type="submit">Ajouter un livre</button>
+    {{ book_form.errors }}
+</form>
+
 <ul>
-    <!-- replace book_set by the related name put on fk of author -->
     {% for book in author.book_set.all %}
-    <!-- pipe | date:'' permet de formatter l'affichage de la date -->
-    <li>{{ book.title }} <sub>{{ book.published | date:'d.m.Y' }}</sub></li>
+    <li>
+        {{ book.title }} <sub>{{ book.published|date:'d.m.Y' }}</sub>
+        <form method="post" action="{% url 'delete_book' book.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Supprimer</button>
+        </form>
+    </li>
     {% empty %}
     <li>Aucun livre enregistré pour cet auteur</li>
     {% endfor %}

@@ -5,6 +5,7 @@ from django.views.generic import View, DetailView
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404
 from .models import Author, Book
 from .forms import AuthorForm, BookForm
 from .mixins import PostPermissionMixin
@@ -76,14 +77,28 @@ class BooksView(PostPermissionMixin, View):
 
 @login_required
 def author_detail(request: HttpRequest, author_id: int) -> HttpResponse:
-    try:
-        author = Author.objects.get(id=author_id)
-    except Author.DoesNotExist:
-        raise Http404("Author does not exist")
+    author = get_object_or_404(Author, id=author_id)
+    if request.method == 'POST':
+        if 'name' in request.POST:  # Formulaire de modification d'auteur
+            author_form = AuthorForm(request.POST, instance=author)
+            if author_form.is_valid():
+                author_form.save()
+                messages.success(request, "Auteur modifié avec succès.")
+        elif 'title' in request.POST:  # Formulaire d'ajout de livre
+            book_form = BookForm(request.POST)
+            if book_form.is_valid():
+                book = book_form.save(commit=False)
+                book.author = author
+                book.save()
+                messages.success(request, "Livre ajouté avec succès.")
+    else:
+        author_form = AuthorForm(instance=author)
+        book_form = BookForm()
+
     return render(
         request,
         'author_detail.html',
-        {'author': author},
+        {'author': author, 'author_form': author_form, 'book_form': book_form},
     )
 
 class AuthorDetail(DetailView):
