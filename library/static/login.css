@@ -1,138 +1,135 @@
 /* library/static/login.css */
 
-/* Reset */
-body, h1, h2, h3, h4, p, ul, ol, li, form, fieldset, legend, label, input, button {
+/* Global Style for Login Page */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-/* Global Styles */
-body {
     font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
     color: #333;
-    background-color: #f4f4f9;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
 }
 
-/* Header Styling */
+/* Header Scoped to Login Page */
 header {
-    background-color: #2c3e50;
-    padding: 10px 20px;
     width: 100%;
-    position: fixed;
+    background: #34495e;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
     top: 0;
 }
 
-header nav ul {
+header nav {
     display: flex;
     justify-content: center;
+}
+
+header ul.header-buttons {
     list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
 }
 
-header nav ul li {
-    margin: 0 15px;
+header ul.header-buttons li {
+    margin: 0;
 }
 
-header nav ul li a {
+header ul.header-buttons li a {
     text-decoration: none;
+    padding: 10px 20px;
     color: #ecf0f1;
-    padding: 8px 16px;
-    border: 2px solid transparent;
-    transition: all 0.3s ease;
+    background: #2c3e50;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-header nav ul li a:hover {
+header ul.header-buttons li a:hover {
+    background: #ecf0f1;
     color: #2c3e50;
-    background-color: #ecf0f1;
-    border: 2px solid #ecf0f1;
-    border-radius: 4px;
 }
 
-/* Main Content */
+/* Main Content for Login Page */
 main {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
-    padding: 20px;
-    margin-top: 80px;
-    background: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    text-align: center;
 }
 
-/* Form Styles */
-form {
+main h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+main form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
-form fieldset {
+main form fieldset {
     border: none;
-    margin-bottom: 15px;
+    padding: 0;
+    margin: 0;
 }
 
-form legend {
-    font-size: 1.4rem;
+main form fieldset legend {
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #2c3e50;
+    color: #34495e;
     margin-bottom: 10px;
 }
 
-form div {
-    margin-bottom: 15px;
+main form div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-form label {
+main form div label {
     font-weight: bold;
     margin-bottom: 5px;
-    display: block;
+    font-size: 0.9rem;
     color: #34495e;
 }
 
-form input {
+main form div input {
+    padding: 12px;
     width: 100%;
-    padding: 10px;
+    font-size: 1rem;
     border: 1px solid #bdc3c7;
     border-radius: 5px;
-    font-size: 1rem;
     outline: none;
-    transition: border 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
-form input:focus {
+main form div input:focus {
     border-color: #3498db;
 }
 
-button[type="submit"] {
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
+main form button[type="submit"] {
+    background: #3498db;
+    color: white;
     font-size: 1rem;
+    padding: 12px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #2980b9;
-}
-
-/* Accessibility Enhancements */
-button[type="submit"]:focus, input:focus {
-    outline: 2px dashed #3498db;
-    outline-offset: 2px;
-}
-
-/* Footer (optional if needed in the future) */
-footer {
-    text-align: center;
-    margin-top: 20px;
-    color: #95a5a6;
-    font-size: 0.8rem;
+main form button[type="submit"]:hover {
+    background: #2980b9;
 }
