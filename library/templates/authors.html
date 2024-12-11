@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Liste des auteurs</title>
 </head>
 <body>
     <h1>Liste des auteurs</h1>
@@ -12,7 +12,7 @@
         <li><a href="/authors/{{author.id}}">{{author.name}}</a></li>
         {% endfor %}
     </ul>
-    <form action="{% url 'library:author' %}" method="post">
+    <form action="{% url 'authors_list' %}" method="post">
     {% csrf_token %}
         <fieldset>
             <legend>Ajouter un auteur</legend>
