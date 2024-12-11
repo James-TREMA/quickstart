@@ -1,1 +1,138 @@
-/* place le css ici  */
+/* library/static/login.css */
+
+/* Reset */
+body, h1, h2, h3, h4, p, ul, ol, li, form, fieldset, legend, label, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Header Styling */
+header {
+    background-color: #2c3e50;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+header nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+header nav ul li {
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #2c3e50;
+    background-color: #ecf0f1;
+    border: 2px solid #ecf0f1;
+    border-radius: 4px;
+}
+
+/* Main Content */
+main {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin-top: 80px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form fieldset {
+    border: none;
+    margin-bottom: 15px;
+}
+
+form legend {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #34495e;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+form input:focus {
+    border-color: #3498db;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Accessibility Enhancements */
+button[type="submit"]:focus, input:focus {
+    outline: 2px dashed #3498db;
+    outline-offset: 2px;
+}
+
+/* Footer (optional if needed in the future) */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #95a5a6;
+    font-size: 0.8rem;
+}
