@@ -5,13 +5,13 @@
 <form method="post">
     {% csrf_token %}
     <div class="form-group form-inline">
-        {{ author_form.name.label|add_class:"form-label" }}
-        {{ author_form.name|add_class:"form-input" }}
+        {{ author_form.name.label_tag }}
+        {{ author_form.name }}
     </div>
     <div class="form-group form-inline">
-        {{ author_form.birthdate.label|add_class:"form-label" }}
-        {{ author_form.birthdate|add_class:"form-input" }}
-    </div>     
+        {{ author_form.birthdate.label_tag }}
+        {{ author_form.birthdate }}
+    </div>
     <button class="btn" type="submit">Modifier</button>
     {{ author_form.errors }}
 </form>
@@ -20,13 +20,13 @@
 <form method="post">
     {% csrf_token %}
     <div class="form-group form-inline">
-        {{ author_form.name.label|add_class:"form-label" }}
-        {{ author_form.name|add_class:"form-input" }}
+        {{ book_form.title.label_tag }}
+        {{ book_form.title }}
     </div>
     <div class="form-group form-inline">
-        {{ author_form.birthdate.label|add_class:"form-label" }}
-        {{ author_form.birthdate|add_class:"form-input" }}
-    </div>       
+        {{ book_form.published.label_tag }}
+        {{ book_form.published }}
+    </div>
     <button class="btn" type="submit">Ajouter un livre</button>
     {{ book_form.errors }}
 </form>

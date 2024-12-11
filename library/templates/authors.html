@@ -1,15 +1,16 @@
 {% extends "base.html" %}
-{% load widget_tweaks %}
 {% block content %}
 <h1>Liste des auteurs</h1>
 
 <form method="post">
     {% csrf_token %}
     <div class="form-group form-inline">
-        {{ form.name|add_label_class:"form-label" }} {{ form.name|add_class:"form-input" }}
+        {{ form.name.label_tag }}
+        {{ form.name }}
     </div>
     <div class="form-group form-inline">
-        {{ form.birthdate|add_label_class:"form-label" }} {{ form.birthdate|add_class:"form-input" }}
+        {{ form.birthdate.label_tag }}
+        {{ form.birthdate }}
     </div>
     <button class="btn" type="submit">Ajouter</button>
     {{ form.errors }}
