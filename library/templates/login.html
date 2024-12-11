@@ -17,22 +17,24 @@
         </nav>
     </header>
     <main>
-        <h1>Connexion</h1>
-        <form method="post">
-            {% csrf_token %}
-            <fieldset>
-                <legend>Connexion</legend>
-                <div>
-                    <label for="id_username">Nom d'utilisateur</label>
-                    <input type="text" name="username" id="id_username" placeholder="Nom d'utilisateur" required>
-                </div>
-                <div>
-                    <label for="id_password">Mot de passe</label>
-                    <input type="password" name="password" id="id_password" placeholder="Mot de passe" required>
-                </div>
-            </fieldset>
-            <button type="submit">Se connecter</button>
-        </form>
+        <section class="login-container">
+            <h1 class="login-title">Connexion</h1>
+            <form method="post" class="login-form">
+                {% csrf_token %}
+                <fieldset class="login-fieldset">
+                    <legend>Identifiez-vous</legend>
+                    <div class="form-group">
+                        <label for="id_username">Nom d'utilisateur</label>
+                        <input type="text" name="username" id="id_username" placeholder="Nom d'utilisateur" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password">Mot de passe</label>
+                        <input type="password" name="password" id="id_password" placeholder="Mot de passe" required>
+                    </div>
+                </fieldset>
+                <button type="submit" class="login-button">Se connecter</button>
+            </form>
+        </section>
     </main>
 </body>
 </html>
