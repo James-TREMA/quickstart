@@ -1,1 +1,21 @@
-<!-- ici le code chatgpt -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Modifier le livre</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group form-inline">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+    </div>
+    <div class="form-group form-inline">
+        {{ form.published.label_tag }}
+        {{ form.published }}
+    </div>
+    <div class="form-group form-inline">
+        {{ form.author.label_tag }}
+        {{ form.author }}
+    </div>
+    <button class="btn btn-primary" type="submit">Enregistrer les modifications</button>
+</form>
+{% endblock %}
