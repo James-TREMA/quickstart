@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hf_z##%n%61y9q7glm+#0oxh05n(_#^72#dstt@)x2^^3=+px='
+SECRET_KEY = 'django-insecure-v+@++jd3eyetvk183*dfst&47cf0z(@8d5d%7#79$w3=pxa@2_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'library',
     'widget_tweaks',
+    'library',
 ]
 
 MIDDLEWARE = [
@@ -106,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'fr'
-USE_L10N = True
 
 TIME_ZONE = 'UTC'
 
@@ -118,12 +117,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/authors/'
+LOGOUT_REDIRECT_URL = '/accounts/login'
