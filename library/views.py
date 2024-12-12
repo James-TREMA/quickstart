@@ -102,14 +102,14 @@ class BooksView(PostPermissionMixin, View):
 
     def edit_book(request, book_id):
         book = get_object_or_404(Book, id=book_id)
-        if request.method == "POST":
+        if request.method == 'POST':
             form = BookForm(request.POST, instance=book)
             if form.is_valid():
                 form.save()
-                return redirect('author_detail', book.author.id)
+                return redirect('books')  # Redirige vers la liste des livres après modification
         else:
             form = BookForm(instance=book)
-        return render(request, 'editbook.html', {'form': form})
+        return render(request, 'library/editbook.html', {'form': form, 'book': book})
 
 class AuthorDetail(DetailView):
     model = Author
