@@ -8,6 +8,7 @@ from django.core.paginator import Paginator
 from .models import Author, Book
 from .forms import AuthorForm, BookForm
 from .mixins import PostPermissionMixin
+from . import views
 
 class AuthorList(LoginRequiredMixin, View):
     def get(self, request: HttpRequest) -> HttpResponse:
