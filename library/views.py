@@ -130,6 +130,13 @@ class AuthorDetail(DetailView):
     template_name = "author_detail.html"
     context_object_name = 'author'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['author_form'] = AuthorForm(instance=self.object)
+        context['book_form'] = BookForm(initial={'author': self.object})
+        return context
+
+
 class AddBookView(View):
     def post(self, request, author_id):
         author = get_object_or_404(Author, id=author_id)
