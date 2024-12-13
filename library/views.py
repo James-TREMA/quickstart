@@ -78,12 +78,17 @@ class BooksView(PostPermissionMixin, View):
     @login_required
     def author_detail(request: HttpRequest, author_id: int) -> HttpResponse:
         author = get_object_or_404(Author, id=author_id)
+        author_form = AuthorForm(instance=author)
+        book_form = BookForm()
+
         if request.method == 'POST':
             if 'name' in request.POST:  # Formulaire de modification d'auteur
                 author_form = AuthorForm(request.POST, instance=author)
                 if author_form.is_valid():
                     author_form.save()
                     messages.success(request, "Auteur modifié avec succès.")
+                    return redirect('author_detail', author_id=author_id)
+
             elif 'title' in request.POST:  # Formulaire d'ajout de livre
                 book_form = BookForm(request.POST)
                 if book_form.is_valid():
@@ -91,15 +96,18 @@ class BooksView(PostPermissionMixin, View):
                     book.author = author
                     book.save()
                     messages.success(request, "Livre ajouté avec succès.")
-        else:
-            author_form = AuthorForm(instance=author)
-            book_form = BookForm()
+                    return redirect('author_detail', author_id=author_id)
 
         return render(
             request,
-            'author_detail.html',
-            {'author': author, 'author_form': author_form, 'book_form': book_form},
+            'library/author_detail.html',
+            {
+                'author': author,
+                'author_form': author_form,
+                'book_form': book_form,
+            },
         )
+
 
 
     def edit_book(request, book_id):
