@@ -1,12 +1,34 @@
 from django.db import models
 
 # Create your models here.
-class Author(models.Model):
-    name = models.CharField(max_length=200)
-    birthdate = models.DateField(null=True, blank=True)
+from django import forms
 
-    def __str__(self):
-        return self.name
+
+from django.apps import apps
+
+Author = apps.get_model('library', 'Author')
+Book = apps.get_model('library', 'Book')
+
+class AuthorForm(forms.ModelForm):
+    class Meta:
+        model = Author
+        fields = ['name', 'birthdate']
+        widgets = {
+            'name': forms.TextInput(attrs={"type": "text", "class": "form-input"}),
+            'birthdate': forms.DateInput(
+                attrs={"type": "date", "class": "form-input"},
+                format='%Y-%m-%d'
+            ),
+        }
+        labels = {
+            'name': 'Nom',
+            'birthdate': 'Date de naissance',
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['birthdate'].input_formats = ['%Y-%m-%d']
+
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
