@@ -2,8 +2,7 @@
 {% block content %}
 <h1>Modifier l'auteur</h1>
 
-<!-- Formulaire de modification d'auteur -->
-<form method="post" action="{% url 'author_detail' author.id %}">
+<form method="post">
     {% csrf_token %}
     <div class="form-group form-inline">
         {{ author_form.name.label_tag }}
@@ -13,12 +12,12 @@
         {{ author_form.birthdate.label_tag }}
         {{ author_form.birthdate }}
     </div>
-    <button class="btn btn-primary" type="submit">Modifier</button>
+    <button class="btn" type="submit">Modifier</button>
     {{ author_form.errors }}
 </form>
 
-<h2>Ajouter un livre</h2>
-<form method="post" action="{% url 'add_book' author.id %}">
+<h2>Liste des livres</h2>
+<form method="post">
     {% csrf_token %}
     <div class="form-group form-inline">
         {{ book_form.title.label_tag }}
@@ -28,11 +27,7 @@
         {{ book_form.published.label_tag }}
         {{ book_form.published }}
     </div>
-    <div class="form-group form-inline">
-        {{ book_form.author.label_tag }}
-        {{ book_form.author }}
-    </div>
-    <button class="btn btn-primary" type="submit">Ajouter</button>
+    <button class="btn" type="submit">Ajouter un livre</button>
     {{ book_form.errors }}
 </form>
 
