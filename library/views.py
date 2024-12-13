@@ -107,6 +107,7 @@ class BooksView(PostPermissionMixin, View):
             form = BookForm(request.POST, instance=book)
             if form.is_valid():
                 form.save()
+                messages.success(request, "Le livre a été modifié avec succès.")
                 return redirect('books')  # Redirige vers la liste des livres après modification
         else:
             form = BookForm(instance=book)
