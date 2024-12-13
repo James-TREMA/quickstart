@@ -118,3 +118,16 @@ class AuthorDetail(DetailView):
     model = Author
     template_name = "author_detail.html"
     context_object_name = 'author'
+
+class AddBookView(View):
+    def post(self, request, author_id):
+        author = get_object_or_404(Author, id=author_id)
+        book_form = BookForm(request.POST)
+        if book_form.is_valid():
+            book = book_form.save(commit=False)
+            book.author = author
+            book.save()
+            messages.success(request, "Livre ajouté avec succès.")
+        else:
+            messages.error(request, "Erreur lors de l'ajout du livre.")
+        return redirect('author_detail', author_id=author_id)
