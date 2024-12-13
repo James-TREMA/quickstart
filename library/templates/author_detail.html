@@ -2,7 +2,8 @@
 {% block content %}
 <h1>Modifier l'auteur</h1>
 
-<form method="post">
+<!-- Formulaire de modification d'auteur -->
+<form method="post" action="{% url 'author_detail' author.id %}">
     {% csrf_token %}
     <div class="form-group form-inline">
         {{ author_form.name.label_tag }}
@@ -16,8 +17,8 @@
     {{ author_form.errors }}
 </form>
 
-<h2>Liste des livres</h2>
-<form method="post">
+<!-- Formulaire pour ajouter un livre -->
+<form method="post" action="{% url 'add_book' author.id %}">
     {% csrf_token %}
     <div class="form-group form-inline">
         {{ book_form.title.label_tag }}

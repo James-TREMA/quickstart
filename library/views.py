@@ -101,6 +101,7 @@ class BooksView(PostPermissionMixin, View):
             {'author': author, 'author_form': author_form, 'book_form': book_form},
         )
 
+
     def edit_book(request, book_id):
         book = get_object_or_404(Book, id=book_id)
         if request.method == 'POST':
