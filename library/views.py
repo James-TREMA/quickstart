@@ -132,9 +132,11 @@ class AuthorDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['author_form'] = AuthorForm(instance=self.object)
-        context['book_form'] = BookForm(initial={'author': self.object})
+        # Ajout des formulaires avec des données préremplies
+        context['author_form'] = AuthorForm(instance=self.object)  # Préremplir le formulaire d'auteur
+        context['book_form'] = BookForm(initial={'author': self.object})  # Formulaire pour ajouter un livre
         return context
+
 
 
 class AddBookView(View):
